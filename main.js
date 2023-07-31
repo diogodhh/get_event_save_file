@@ -39,23 +39,24 @@ socket.on('message', function(data) {
 
 socket.on('call-was-connected', function(data) {
 
-	console.log(`${data.call.call_mode} | ${data.call.id} | Identifier ${data.call.identifier} | Extension ${data.agent.extension.extension_number}`);
-
-    // Extract the ID and replace colons with slashes
-    var filename = data.call.id.replace(/:/g, '-') + '.json';
-
-    // Prepend the path
-    filename = process.env.FILE_PATH + filename;
-
     // Check if call mode is 'dialer' and save new file
-    if(data.call.call_mode='dialer' && data.agent.extension.extension_number){
+    if(data.call.call_mode==='dialer' && data.agent && data.agent.extension && data.agent.extension.extension_number){
 
-    	fs.writeFile(filename, JSON.stringify(data), function(err) {
-        	if (err) {
-            	return console.log(err);
-        	}
+        // Extract the ID and replace colons with slashes
+        var filename = `onConnect_${data.agent.extension.extension_number}.txt`;
+
+        // Prepend the path
+        filename = process.env.FILE_PATH + filename;
+
+        var filecontent = `${data.call.connected_time};${data.call.call_mode};${data.call.sid};${data.call.identifier};${data.agent.extension.extension_number}`;
+
+    	fs.appendFile(filename, filecontent + '\n', function(err) {
+            if (err) {
+                return console.log(err);
+            }
+            console.log(`Logged: ${filecontent} | File: ${filename}`)
         });
-    };
+    }
 });
     
 
