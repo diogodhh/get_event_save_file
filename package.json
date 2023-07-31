@@ -1,0 +1,15 @@
+{
+  "name": "get_event_save_file",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "socket.io-client": "^4.7.1"
+  }
+}
