@@ -43,7 +43,7 @@ Execute o script:
 node main.js
 ```
 
-O script se conectará ao servidor Socket.IO e começará a escutar os eventos call-was-connected. Quando um evento é recebido, ele as informações abaixo são armazenadas em um arquivo TXT chamado onConnect_{RAMAL}.txt:
+O script se conectará ao servidor Socket.IO e começará a escutar os eventos call-was-connected. Quando um evento é recebido, as informações abaixo são armazenadas em um arquivo TXT chamado onConnect_{RAMAL}.txt:
 ```csv
 timestamp;modo;protocolo;identificador;ramal
 ```
